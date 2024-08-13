@@ -1,5 +1,5 @@
 from turtle import Turtle, Screen, colormode
-from random import choice, randint
+from random import randint
 
 
 def random_color():
