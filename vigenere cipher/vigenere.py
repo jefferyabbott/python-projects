@@ -21,6 +21,7 @@ def encrypt(original_text, key, direction):
             output_text += character
     print(f"Here is the encoded result: {output_text}")
 
+
 while True:
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
     if direction != 'encode' and direction != 'decode':
