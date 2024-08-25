@@ -1,0 +1,4 @@
+MY_EMAIL='enter your email address'
+MY_EMAIL_PASSWORD='enter your email password'
+SMTP_SERVER='enter your email provider SMTP server'
+SMTP_PORT=587
