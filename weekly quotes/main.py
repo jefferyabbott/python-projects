@@ -34,7 +34,8 @@ def email_quote(quote):
 
 
 now = dt.datetime.now()
-if now.weekday() == 6:
+# send the inspirational quote if it's a Monday
+if now.weekday() == 0:
     quote_of_the_day = pick_a_quote()
     if quote_of_the_day != "":
         email_quote(quote_of_the_day)
