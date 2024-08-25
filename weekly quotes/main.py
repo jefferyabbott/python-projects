@@ -1,6 +1,5 @@
 import datetime as dt
 import smtplib
-from contextlib import nullcontext
 from random import choice
 import os
 from dotenv import load_dotenv
