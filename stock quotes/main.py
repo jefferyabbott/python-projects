@@ -40,8 +40,6 @@ stock_resp = requests.get(url=alpha_vantage_url, params=alpha_vantage_params)
 stock_resp.raise_for_status()
 stock_data = stock_resp.json()
 
-print(stock_data)
-
 closing_date = list(stock_data['Time Series (Daily)'].keys())[0]
 previous_closing_date = list(stock_data['Time Series (Daily)'].keys())[1]
 closing_price = stock_data['Time Series (Daily)'][closing_date]['4. close']
