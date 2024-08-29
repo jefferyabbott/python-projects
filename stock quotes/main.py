@@ -46,12 +46,6 @@ closing_date = list(stock_data['Time Series (Daily)'].keys())[0]
 previous_closing_date = list(stock_data['Time Series (Daily)'].keys())[1]
 closing_price = stock_data['Time Series (Daily)'][closing_date]['4. close']
 previous_closing_price = stock_data['Time Series (Daily)'][previous_closing_date]['4. close']
-
-print(closing_price)
-print(previous_closing_price)
-
-closing_price = 209.523
-previous_closing_price = 255.425
 percent_change = ((closing_price - previous_closing_price) / closing_price) * 100
 
 if percent_change >= 5 or percent_change <= -5:
