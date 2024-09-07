@@ -27,11 +27,23 @@ def get_spotify_token():
             username=os.getenv('SPOTIFY_DISPLAY_NAME')
         )
     )
-    return sp.current_user()['id']
+    return sp
 
 target_date = input("What day would you like to musically travel to? (YYYY-MM-DD) ]")
+year = target_date.split('-')[0]
 songs = get_top_100_songs_for_date(target_date)
 
 # generate Spotify API token
-# get_spotify_token()
+spotify = get_spotify_token()
 
+song_urls = []
+for song in songs:
+    result = spotify.search(q=f"track:{song} year:{year}", type="track")
+    try:
+        url = result["tracks"]["items"][0]["uri"]
+        song_urls.append(url)
+    except IndexError:
+        print(f"'{song}' not found in Spotify, skipping.")
+
+for song_url in song_urls:
+    print(song_url)
