@@ -45,5 +45,6 @@ for song in songs:
     except IndexError:
         print(f"'{song}' not found in Spotify, skipping.")
 
-for song_url in song_urls:
-    print(song_url)
+# create Spotify playlist
+playlist = spotify.user_playlist_create(user=os.getenv('SPOTIFY_DISPLAY_NAME'), name=f"{target_date} Billboard 100", public=False)
+spotify.playlist_add_items(playlist_id=playlist["id"], items=song_urls)
