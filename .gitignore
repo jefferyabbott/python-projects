@@ -5,4 +5,5 @@ data.json
 .env
 token.txt
 .vscode
+*.db
 
