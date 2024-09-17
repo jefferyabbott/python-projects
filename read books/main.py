@@ -45,6 +45,15 @@ def add():
         return redirect(url_for('home'))
     return render_template('add.html')
 
+@app.route("/delete")
+def delete():
+    with app.app_context():
+        book_id = request.args.get('id')
+        book_to_delete = db.session.execute(db.select(Book).where(Book.id == book_id)).scalar()
+        db.session.delete(book_to_delete)
+        db.session.commit()
+    return redirect(url_for('home'))
+
 
 @app.route("/edit/rating/<book_id>", methods=["GET", "POST"])
 def edit_rating(book_id):
