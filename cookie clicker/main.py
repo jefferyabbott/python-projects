@@ -20,6 +20,10 @@ language_button_eng.click()
 # sleep while page loads
 time.sleep(5)
 
+# Locate and click the 'Accept All' button on the cookie consent dialog
+cookie_accept_button = driver.find_element(By.CSS_SELECTOR, '.cc_btn_accept_all')
+cookie_accept_button.click()
+
 cookie = driver.find_element(By.XPATH, value='//*[@id="bigCookie"]')
 available_addons = driver.find_elements(By.CLASS_NAME, value='enabled')
 last_purchased_index = -1
