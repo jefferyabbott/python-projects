@@ -10,24 +10,44 @@ def set_difficulty():
             return 10
         elif difficulty == 'hard':
             return 5
+        else:
+            print("Invalid input. Please type 'easy' or 'hard'.")
 
 
-print("Welcome to the Number Guessing Game!")
-print("I'm thinking of a number between 1 and 100.")
+def get_valid_guess() -> int:
+    while True:
+        guess = input("Guess a numnber (1-100): ")
+        if guess.isdigit():
+            guess = int(guess)
+            if 1 <= guess <= 100:
+                return guess
+            else:
+                print("Your guess must be between 1 and 100.")
 
-target = randint(1, 100)
-turns = set_difficulty()
 
-for x in range(turns):
-    guess = 'X'
-    while not guess.isdigit():
-        print(f"You have {turns - x} attempts remaining to guess the number.")
-        guess = input("Make a guess: ")
-    guess = int(guess)
-    if guess == target:
-        print(f"{guess} is correct, you win!")
-        break
-    elif guess > target:
-        print("too high")
-    else:
-        print("too low")
+def play_game():
+    print("Welcome to the Number Guessing Game!")
+    print("I'm thinking of a number between 1 and 100.")
+
+    target = randint(1, 100)
+    turns = set_difficulty()
+
+    for attempt in range(1, turns + 1):
+        print(f"You have {turns - attempt + 1} attempts remaining to guess the number.")
+        guess = get_valid_guess()
+
+        if guess == target:
+            print(f"{guess} is correct! You win!")
+            return
+        elif guess > target:
+            print("Too high.")
+        else:
+            print("Too low.")
+
+    print(f"Sorry, you're out of attempts. The correct number was {target}.")
+
+
+if __name__ == "__main__":
+    play_game()
+
+
